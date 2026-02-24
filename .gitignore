@@ -35,3 +35,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Claude ###
+.CLAUDE.md
+
+### Environment Variables ###
+.env
+!.env.example

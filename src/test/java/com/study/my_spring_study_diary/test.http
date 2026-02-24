@@ -1,0 +1,6 @@
+curl -X PUT <http://localhost:8080/api/v1/logs/1> \\
+-H "Content-Type: application/json" \\
+-d '{
+"title": "AOP 관점 지향 프로그래밍 (복습 완료)",
+"understanding": "GOOD"
+}'

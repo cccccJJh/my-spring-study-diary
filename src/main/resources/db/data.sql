@@ -22,3 +22,12 @@ VALUES ('Spring Boot 시작하기', 'Spring Boot 프로젝트 생성과 기본 �
        ('Java 동시성 프로그래밍', 'Thread와 동시성 제어 방법을 학습했습니다.', 'JAVA', 'VERY_BAD', 240, DATE_SUB(CURDATE(), INTERVAL 6 DAY)),
        ('Docker 컨테이너화', 'Spring Boot 애플리케이션을 Docker로 컨테이너화하는 방법을 학습했습니다.', 'ETC', 'VERY_GOOD', 100,
         DATE_SUB(CURDATE(), INTERVAL 7 DAY));
+
+
+
+-- 샘플 사용자 데이터 (비밀번호: password123)
+INSERT INTO users (email, password, username, role) VALUES
+                                                        ('admin@example.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG', 'Admin User', 'ADMIN'),
+                                                        ('user@example.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG', 'Normal User', 'USER'),
+                                                        ('manager@example.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG', 'Manager User', 'MANAGER')
+    ON DUPLICATE KEY UPDATE email = email;

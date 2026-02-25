@@ -238,7 +238,7 @@ public class RedisService {
 package com.study.myspringstudydiary.service;
 
 import com.study.myspringstudydiary.dto.UserResponse;
-import com.study.myspringstudydiary.entity.User;
+//import com.study.myspringstudydiary.entity.User;
 import com.study.myspringstudydiary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

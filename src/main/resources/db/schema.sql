@@ -37,3 +37,21 @@ INSERT INTO study_logs (title, content, category, understanding, study_time, stu
 
 -- 테이블 생성 확인
 SELECT 'study_logs table created successfully with initial data' AS message;
+
+
+
+-- Users 테이블 생성
+CREATE TABLE users (
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '사용자 ID',
+                       email VARCHAR(255) NOT NULL UNIQUE COMMENT '이메일',
+                       password VARCHAR(255) NOT NULL COMMENT '비밀번호 (BCrypt)',
+                       username VARCHAR(100) NOT NULL COMMENT '사용자명',
+                       role VARCHAR(50) NOT NULL DEFAULT 'USER' COMMENT '권한 (USER, ADMIN, MANAGER)',
+                       enabled BOOLEAN DEFAULT TRUE COMMENT '활성화 여부',
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='사용자 테이블';
+
+-- 인덱스 생성
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_role ON users(role);

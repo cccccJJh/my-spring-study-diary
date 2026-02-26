@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 public class LoginResponse {
 
-    private String userName;
+    private String username;
     private String password;
 
 

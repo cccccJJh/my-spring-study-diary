@@ -26,8 +26,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    // SpringDoc OpenAPI - Swagger UI 포함
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'com.h2database:h2'
     // MySQL 및 JDBC 의존성
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'mysql:mysql-connector-java:8.0.33'
@@ -46,13 +50,29 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // Spring Security (현재 스크린샷의 빨간줄 해결용)
+    // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // JWT 관련 라이브러리 (보통 이 3개를 세트로 씁니다)
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    // ── [추가] Bean Validation ──
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // ── [추가] MapStruct ──
+    implementation    'org.mapstruct:mapstruct:1.6.3'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    // ── [추가] Spring Security ──
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // ── [추가] JWT (JJWT) ──
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+    runtimeOnly    'io.jsonwebtoken:jjwt-impl:0.12.6'
+    runtimeOnly    'io.jsonwebtoken:jjwt-jackson:0.12.6'
+
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    // 만약 junit5가 없다면 이것도 추가
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+
 }
 
 tasks.named('test') {

@@ -3,12 +3,15 @@ package com.study.myspringstudydiary.study_log.dto.request;
 import com.study.myspringstudydiary.study_log.entity.Category;
 import com.study.myspringstudydiary.study_log.entity.EnumValid;
 import com.study.myspringstudydiary.study_log.entity.Understanding;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
+@Schema(description = "학습 기록 생성 요청")
 public class StudyLogCreateRequest {
 
+    @Schema(description = "학습 주제", example = "Spring Boot API 문서화", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotBlank(message="제목은 필수입니다.")
     @Size(min = 2, max = 100, message = "제목은 2자 이상 100자 이하여야 합니다.")
     private String title;
@@ -17,6 +20,8 @@ public class StudyLogCreateRequest {
     @Size(min=10, max=5000, message="내용은 10자 이상 5000자 이하여야 합니다.")
     private String content;
 
+    @Schema(description = "학습 카테고리", example = "SPRING",
+            allowableValues = {"JAVA", "SPRING", "JPA", "DATABASE", "ALGORITHM", "CS", "NETWORK", "GIT", "ETC"})
     @NotBlank(message="카테고리는 필수입니다.")
     //@Pattern(regexp="^(JAVA|SPRING|JPA|DATABASE|ALGORITHM|CS|NETWORK|GIT|ETC)$", message = "카테고리는 JAVA, SPRING, JPA, DATABASE, ALGORITHM, CS, NETWORK, GIT, ETC 중 하나여야 합니다")
     @EnumValid(enumClass = Category.class, message="유효하지 않은 카테고리입니다.")

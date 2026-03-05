@@ -4,8 +4,7 @@ spring:
   messages:
     basename: messages/validation
     encoding: UTF-8
-
-  # MySQL 데이터베이스 설정
+   # MySQL 데이터베이스 설정
   datasource:
     url: jdbc:mysql://localhost:3306/diary_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
@@ -42,3 +41,36 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+# JWT 설정
+jwt:
+  secret: "YourBase64EncodedSecretKeyHereMustBeAtLeast256BitsLong!!"
+  access-token-expiration: 1800000    # 30분 (밀리초)
+  refresh-token-expiration: 604800000 # 7일 (밀리초)
+
+
+springdoc:
+  # Swagger UI 경로 설정
+  swagger-ui:
+    # Swagger UI 접속 경로
+    path: /swagger-ui.html
+    # API 목록을 그룹별로 표시
+    groups-order: DESC
+    # 태그를 알파벳 순으로 정렬
+    tags-sorter: alpha
+    # 오퍼레이션을 HTTP 메서드 순으로 정렬
+    operations-sorter: method
+    # Try it out 기능 기본 활성화
+    disable-swagger-default-url: true
+    # 요청 소요 시간 표시
+    display-request-duration: true
+
+  # OpenAPI 문서 경로
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+
+  # 패키지 경로 스캔 설정
+  packages-to-scan: com.study.myspringstudydiary
+
+  # 기본 스프링 액추에이터 응답 제외
+  show-actuator: false

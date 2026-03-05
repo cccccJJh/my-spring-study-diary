@@ -15,6 +15,7 @@ import java.util.List;
 @Builder
 public class User implements UserDetails {
 
+    private String accessToken;
     private Long id;
     private String email;
     private String password;
